@@ -1,5 +1,7 @@
 package pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -9,7 +11,9 @@ import util.TestRule;
 
 public class CommonPage {
 
-    protected WebDriver driver = TestRule.getDriver();
+    //private static final Duration Duration = Duration.of(30);
+    
+	protected WebDriver driver = TestRule.getDriver();
 
     public CommonPage(){}
 
@@ -21,7 +25,10 @@ public class CommonPage {
 
     //explicit wait example
     protected void waitVisibilityOf(WebElement element){
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+       // WebDriverWait wait = new WebDriverWait(driver, 30);
+    	Duration duration1 = Duration.ofSeconds(30);
+    	WebDriverWait wait = new WebDriverWait(driver, duration1);
+        
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
